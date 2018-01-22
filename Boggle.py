@@ -146,6 +146,7 @@ def run():
             self.master.title("BoggleCheat")
             self.master.configure(background='slate grey')
             self.frame = Frame(self.master)
+            self.word_count = Label(self.master, text='')
             self.buttons = {}
             for i in range(4):
                 self.buttons[i] = {}
@@ -165,6 +166,7 @@ def run():
         def refresh(self):
             self.frame.destroy()
             self.text.destroy()
+            self.word_count.destroy()
             self.__init__(self.master)
 
         def submit(self, event):
@@ -179,8 +181,8 @@ def run():
             for word in self.solver.words:
                 self.text.insert(END, word.word + '\n')
             self.text.grid(row=11,column=0)
-            label = Label(self.master,text=str(len(self.solver.words))+' words')
-            label.grid(row=9,column=0)
+            self.word_count = Label(self.master,text=str(len(self.solver.words))+' words')
+            self.word_count.grid(row=9,column=0)
 
         def key(self, event):
             if event.keysym == 'KP_Enter' or event.keysym == 'Return':
