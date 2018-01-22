@@ -9,3 +9,4 @@ Features I may add:
   - path display
   - larger display of best word that advances with key press
   - order words by point values or word length
+  - algorithm optimization
