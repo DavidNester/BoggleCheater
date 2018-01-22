@@ -56,7 +56,14 @@ class Solver:
         self.dw = dw
         self.tl = tl
         self.tw = tw
+        self.q_fix()
         self.generate_word_list()
+
+    def q_fix(self):
+        for i in range(4):
+            for j in range(4):
+                if self.board[i][j] == 'q':
+                    self.board[i][j] = 'qu'
 
     def generate_word_list(self):
         for i in range(0,len(self.board[0])):
@@ -155,7 +162,7 @@ def run():
                     self.buttons[i][j].place()
             self.frame.grid(row=0,column=0)
             self.text = Text(self.master, width=10)  # font=("helvetica", 32)
-            label = Label(self.master,text='Press Enter to generate words')
+            label = Label(self.master,text='Press Enter to generate words. Enter "qu" as "q"')
             label.grid(row=8,column=0)
             self.cur_row = 0
             self.cur_col = 0
